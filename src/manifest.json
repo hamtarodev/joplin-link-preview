@@ -1,0 +1,15 @@
+{
+	"manifest_version": 1,
+	"id": "com.jeto.LinkPreviewer",
+	"app_min_version": "2.13",
+	"version": "1.0.0",
+	"name": "Link Preview",
+	"description": "Simple plugin to display a stylish preview of a link",
+	"author": "xhamtaro99",
+	"homepage_url": "",
+	"repository_url": "",
+	"keywords": [],
+	"categories": [],
+	"screenshots": [],
+	"icons": {}
+}
