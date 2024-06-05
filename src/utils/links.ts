@@ -4,10 +4,16 @@
  * @returns boolean
  */
 export const isLink = (line: string): boolean => {
-    if (line === null || line === undefined || line === "") return false;
-
     const linkRegex = /\[([^\]]*)\]\((https?:\/\/)[^)]+\)/gm;
+    if (line === null || line === undefined || line === "") return false;
     const regexpRes = line.match(linkRegex);
-    console.log(`Debugging ${line}`, regexpRes);
+    console.log(`isLink Debugging: `, line, regexpRes);
     return regexpRes != null ? regexpRes.length != 0 : false;
+}
+
+export const extractLink = (line: string) => {
+    const regexpExtract = /\[([^\]]+)\]\(([^)]+)\)/;
+    const regexpRes = regexpExtract.exec(line);
+    console.log(`Debugging: `, regexpRes);
+    return regexpRes;
 }
