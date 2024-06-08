@@ -50,29 +50,35 @@ const composeCard = async (props: cardProps) => {
 
     const card = document.createElement('div');
     card.setAttribute('class', 'card');
+    card.setAttribute('link-for', props.link);
 
-    // const label = document.createElement('label');
-    // label.setAttribute('class', 'card-label');
-    // label.innerHTML = props.title;
+    // details
+    const cardDetails = document.createElement('div');
+    cardDetails.classList.add('card-details');
 
-    const cardImage = document.createElement('img');
-    cardImage.setAttribute('src', urlMetaData['og:image']);
+    const cardTitle = document.createElement('div');
+    cardTitle.classList.add('card-title');
+    const cardTitleContent = document.createElement('h3');
+    cardTitleContent.innerHTML = urlMetaData['og:title'];
+    cardTitle.appendChild(cardTitleContent);
+    cardDetails.appendChild(cardTitle);
 
-    const cardTitleDescDiv = document.createElement('div');
-
-    const cardTitle = document.createElement('h3');
-    cardTitle.innerHTML = urlMetaData['og:title'];
-
-    const cardDesc = document.createElement('p');
-    cardDesc.innerHTML = urlMetaData['og:description'];
-
-    cardTitleDescDiv.appendChild(cardTitle);
-    cardTitleDescDiv.appendChild(cardDesc);
+    const cardDescription = document.createElement('div');
+    cardDescription.classList.add('card-description');
+    const cardDescriptionContent = document.createElement('p');
+    cardDescriptionContent.innerHTML = urlMetaData['og:description'];
+    cardDescription.appendChild(cardDescriptionContent);
+    cardDetails.appendChild(cardDescription);
     
-    card.append(cardImage);
-    card.append(cardTitleDescDiv);
+    card.appendChild(cardDetails);
 
-    // cardDiv.append(label);
+    // image
+    const cardImage = document.createElement('div');
+    cardImage.classList.add('card-image');
+    cardImage.setAttribute('style', `background-image: url(${urlMetaData['og:image']})`);
+
+    card.appendChild(cardImage)
+
     cardDiv.append(card);
 
     return cardDiv;

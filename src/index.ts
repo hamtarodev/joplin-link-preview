@@ -6,6 +6,8 @@ joplin.plugins.register({
 	onStart: async function() {
 		const panel = await joplin.views.panels.create(`panel`);
 		await joplin.views.panels.addScript(panel, './styles/main.css');
+		await joplin.views.panels.addScript(panel, './webview.js');
+
 		async function updateToView() {
 			const note = await joplin.workspace.selectedNote();
 			const body = note.body;
@@ -24,6 +26,7 @@ joplin.plugins.register({
 
 			const ui = await composeUi(linkToPreview);
 			await joplin.views.panels.setHtml(panel, ui);
+			joplin.views.panels.postMessage(panel, 'init');
 		}
 
 		await joplin.workspace.onNoteSelectionChange(() => {

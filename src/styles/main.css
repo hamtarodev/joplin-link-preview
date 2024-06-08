@@ -54,5 +54,26 @@ img {
 }
 
 .card {
+    display: flex;
+    flex-direction: row;
     margin-bottom: 25px;
+}
+
+.card-details {
+    padding: 10px;
+    flex: 1 1 100%;
+    background-color: var(--joplin-background-color3);
+}
+
+.card-image {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    flex: 1 1 75%;
+}
+
+.card-image:hover,
+.card-details {
+    cursor: pointer;
 }
